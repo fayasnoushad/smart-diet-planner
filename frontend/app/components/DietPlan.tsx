@@ -1,3 +1,5 @@
+import { API_URL } from "@/config";
+import axios from "axios";
 import React from "react";
 
 interface Nutrition {
@@ -16,10 +18,24 @@ interface Meal {
 }
 
 interface Props {
-  plan: object;
+  plan: any[]; // Change to array type for consistency
+  day: string;
+  dayIndex: number;
 }
 
-export default function DietPlan({ plan }: Props) {
+export default function DietPlan({ plan, day, dayIndex }: Props) {
+  const handleDownloadPDF = async () => {
+    const response = await axios.post(
+      API_URL + "generate_pdf/",
+      { day, food_list: plan[dayIndex] },
+      { responseType: "blob" }
+    );
+    const url = window.URL.createObjectURL(response.data);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${day}_diet_plan.pdf`;
+    a.click();
+  };
   return (
     <div className="max-w-7xl mx-auto my-10">
       {Array.isArray(plan) &&
@@ -72,6 +88,9 @@ export default function DietPlan({ plan }: Props) {
             </div>
           </section>
         ))}
+      <button onClick={handleDownloadPDF} className="btn btn-emerald">
+        Download {day} Plan as PDF
+      </button>
     </div>
   );
 }

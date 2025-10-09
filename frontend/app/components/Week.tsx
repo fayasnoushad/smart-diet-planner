@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function Weeks({ data }: Props) {
-  const [dietPlan, setDietPlan] = useState<Record<number, object>>({});
+  const [dietPlan, setDietPlan] = useState<Record<number, any[]>>({});
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState(-1);
   const days = [
@@ -32,10 +32,9 @@ export default function Weeks({ data }: Props) {
         ...data,
         week: days[selected],
       });
-      console.log(response);
       setDietPlan((prevDietPlan) => ({
         ...prevDietPlan,
-        [selected]: response.data,
+        [selected]: Array.isArray(response.data) ? response.data : [],
       }));
       setLoading(false);
     };
@@ -64,7 +63,13 @@ export default function Weeks({ data }: Props) {
         ))}
       </div>
       {loading && <Loading />}
-      {!loading && dietPlan[selected] && <DietPlan plan={dietPlan[selected]} />}
+      {!loading && dietPlan[selected] && (
+        <DietPlan
+          plan={dietPlan[selected]}
+          day={days[selected]}
+          dayIndex={selected}
+        />
+      )}
     </div>
   );
 }
