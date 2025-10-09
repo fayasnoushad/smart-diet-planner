@@ -1,9 +1,18 @@
 import React from "react";
 
+interface Nutrition {
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+  sugar: number;
+}
+
 interface Meal {
   name: string;
   veg: boolean;
-  reciepie: string;
+  ingredients: string;
+  nutrition: Nutrition;
 }
 
 interface Props {
@@ -12,7 +21,7 @@ interface Props {
 
 export default function DietPlan({ plan }: Props) {
   return (
-    <div className="max-w-7xl mx-auto py-10 px-6 space-y-14">
+    <div className="max-w-7xl mx-auto my-10">
       {Array.isArray(plan) &&
         plan.map((foodType, index) => (
           <section key={index}>
@@ -20,17 +29,43 @@ export default function DietPlan({ plan }: Props) {
               🥣{" "}
               {foodType.type.charAt(0).toUpperCase() + foodType.type.slice(1)}
             </h2>
-            <div className="m-5 flex flex-row flex-wrap justify-center items-center">
+            <div className="m-5 flex flex-row flex-wrap justify-center items-center w-[100%] gap-2">
               {foodType.meals.map((meal: Meal, mealIdx: number) => (
                 <div
                   key={mealIdx}
-                  className="card shadow-xl hover:shadow-2xl border border-emerald-100 w-[30%] mx-5"
+                  className="card shadow-xl hover:shadow-2xl border border-emerald-100 md:w-[40%] lg:w-[25%] mx-[2%] mb-5"
                 >
-                  <div className="card-body">
-                    <h3 className="card-title text-emerald-600">
-                      {meal.name} {meal.veg ? "🌱" : "🍗"}
-                    </h3>
-                    <p>{meal.reciepie}</p>
+                  <div className="card-body text-left">
+                    <h3 className="card-title text-emerald-600">{meal.name}</h3>
+                    <div>
+                      <span className="font-semibold">Type:</span>{" "}
+                      {meal.veg ? "Veg 🌱" : "Non-Veg 🍗"}
+                    </div>
+                    <p>{meal.ingredients}</p>
+                    {meal.nutrition && (
+                      <div className="mt-3 text-sm">
+                        <div>
+                          <span className="font-semibold">Calories:</span>{" "}
+                          {meal.nutrition.calories || undefined} kcal
+                        </div>
+                        <div>
+                          <span className="font-semibold">Protein:</span>{" "}
+                          {meal.nutrition.protein} g
+                        </div>
+                        <div>
+                          <span className="font-semibold">Carbs:</span>{" "}
+                          {meal.nutrition.carbs} g
+                        </div>
+                        <div>
+                          <span className="font-semibold">Fat:</span>{" "}
+                          {meal.nutrition.fat} g
+                        </div>
+                        <div>
+                          <span className="font-semibold">Sugar:</span>{" "}
+                          {meal.nutrition.sugar} g
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}

@@ -47,10 +47,24 @@ def diet_plan(details: schemas.DietRequest):
         prompt += f"Activity Level: {details.activity_level}\n"
     prompt += (
         "Return only JSON matching this schema: ["
-        " {'type': 'breakfast', 'meals': [{'name': str, 'veg': bool, 'reciepie': str}]}, "
-        " {'type': 'lunch', 'meals': [{'name': str, 'veg': bool, 'reciepie': str}]}, "
-        " {'type': 'dinner', 'meals': [{'name': str, 'veg': bool, 'reciepie': str}]}"
+        " {'type': 'breakfast', 'meals': ["
+        "   {'name': str, 'veg': bool, 'ingredients': str, "
+        "    'nutrition': {'calories': float, 'protein': float, 'carbs': float, 'fat': float, 'sugar': float}"
+        "   }"
+        " ]}, "
+        " {'type': 'lunch', 'meals': ["
+        "   {'name': str, 'veg': bool, 'ingredients': str, "
+        "    'nutrition': {'calories': float, 'protein': float, 'carbs': float, 'fat': float, 'sugar': float}"
+        "   }"
+        " ]}, "
+        " {'type': 'dinner', 'meals': ["
+        "   {'name': str, 'veg': bool, 'ingredients': str, "
+        "    'nutrition': {'calories': float, 'protein': float, 'carbs': float, 'fat': float, 'sugar': float}"
+        "   }"
+        " ]}"
         "]"
+        "\nEach meal must include nutritional information: calories, protein (g), carbs (g), fat (g), and sugar (g)."
+        "\nGive at least three meals per type."
     )
     try:
         response = client.models.generate_content(
