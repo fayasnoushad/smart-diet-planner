@@ -1,0 +1,14 @@
+@import url("https://fonts.cdnfonts.com/css/poppins");
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: light, dark, cupcake;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+main {
+  min-height: 80vh;
+}
