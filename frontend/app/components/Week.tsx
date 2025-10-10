@@ -64,11 +64,7 @@ export default function Weeks({ data }: Props) {
       </div>
       {loading && <Loading />}
       {!loading && dietPlan[selected] && (
-        <DietPlan
-          plan={dietPlan[selected]}
-          day={days[selected]}
-          dayIndex={selected}
-        />
+        <DietPlan plan={dietPlan[selected]} day={days[selected]} />
       )}
     </div>
   );

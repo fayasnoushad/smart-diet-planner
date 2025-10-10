@@ -20,14 +20,13 @@ interface Meal {
 interface Props {
   plan: any[]; // Change to array type for consistency
   day: string;
-  dayIndex: number;
 }
 
-export default function DietPlan({ plan, day, dayIndex }: Props) {
+export default function DietPlan({ plan, day }: Props) {
   const handleDownloadPDF = async () => {
     const response = await axios.post(
       API_URL + "generate_pdf/",
-      { day, food_list: plan[dayIndex] },
+      { day, food_list: plan },
       { responseType: "blob" }
     );
     const url = window.URL.createObjectURL(response.data);
@@ -88,7 +87,10 @@ export default function DietPlan({ plan, day, dayIndex }: Props) {
             </div>
           </section>
         ))}
-      <button onClick={handleDownloadPDF} className="btn btn-emerald">
+      <button
+        onClick={handleDownloadPDF}
+        className="btn bg-emerald-600 rounded-lg"
+      >
         Download {day} Plan as PDF
       </button>
     </div>
