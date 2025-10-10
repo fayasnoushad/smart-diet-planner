@@ -39,6 +39,9 @@ export default function Form({ setData }: FormProps) {
 
   const submit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
+    if (height < 50 || height > 300) return alert("Height is invalid");
+    if (weight < 2 || weight > 1000) return alert("Weight is invalid");
+    if (age < 1 || age > 150) return alert("Age is invalid");
     setData({
       height,
       weight,
