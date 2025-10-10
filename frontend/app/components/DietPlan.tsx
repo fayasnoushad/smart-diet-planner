@@ -36,11 +36,11 @@ export default function DietPlan({ plan, day }: Props) {
     a.click();
   };
   return (
-    <div className="max-w-7xl mx-auto my-10">
+    <div className="mx-[5%]  my-10">
       {Array.isArray(plan) &&
         plan.map((foodType, index) => (
           <section key={index}>
-            <h2 className="text-2xl font-bold text-emerald-700 mb-6 text-center">
+            <h2 className="text-2xl font-bold text-cyan-500 mb-6 text-center ">
               🥣{" "}
               {foodType.type.charAt(0).toUpperCase() + foodType.type.slice(1)}
             </h2>
@@ -48,7 +48,7 @@ export default function DietPlan({ plan, day }: Props) {
               {foodType.meals.map((meal: Meal, mealIdx: number) => (
                 <div
                   key={mealIdx}
-                  className="card shadow-xl hover:shadow-2xl border border-emerald-100 md:w-[40%] lg:w-[25%] mx-[2%] mb-5"
+                  className="card shadow-xl hover:shadow-2xl bg-base-200 border border-emerald-100 md:w-[40%] lg:w-[25%] mx-[2%] mb-5"
                 >
                   <div className="card-body text-left">
                     <h3 className="card-title text-emerald-600">{meal.name}</h3>
@@ -89,7 +89,7 @@ export default function DietPlan({ plan, day }: Props) {
         ))}
       <button
         onClick={handleDownloadPDF}
-        className="btn bg-emerald-600 rounded-lg"
+        className="btn bg-cyan-600 rounded-lg"
       >
         Download {day} Plan as PDF
       </button>

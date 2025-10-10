@@ -31,12 +31,12 @@ async def root():
 
 @app.post("/diet_plan")
 async def get_diet_plan(details: schemas.DietRequest):
-    result = diet_plan(details)
+    result = await diet_plan(details)
     return result
 
 
 @app.post("/generate_pdf/")
-def generate_pdf(diet_plan: dict):
+async def generate_pdf(diet_plan: dict):
     buffer = BytesIO()
     pdf = canvas.Canvas(buffer, pagesize=A4)
     width, height = A4

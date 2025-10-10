@@ -26,15 +26,13 @@ def calculate_bmi_index(height, weight, age):
         return "Obesity Class III (Extreme Obesity)"
 
 
-def diet_plan(details: schemas.DietRequest):
+async def diet_plan(details: schemas.DietRequest):
     bmi = calculate_bmi_index(details.height, details.weight, details.age)
     client = genai.Client(api_key=configs.GOOGLE_API_KEY)
     prompt = (
         f"Generate a {details.week.title()} diet plan in JSON format for a person with the following details:\n"
         f"Age: {details.age}\n"
         f"Gender: {details.gender}\n"
-        f"Height: {details.height} meters\n"
-        f"Weight: {details.weight} kg\n"
         f"BMI Status: {bmi}\n"
     )
     if details.preferences:
@@ -52,16 +50,7 @@ def diet_plan(details: schemas.DietRequest):
         "    'nutrition': {'calories': float, 'protein': float, 'carbs': float, 'fat': float, 'sugar': float}"
         "   }"
         " ]}, "
-        " {'type': 'lunch', 'meals': ["
-        "   {'name': str, 'veg': bool, 'ingredients': str, "
-        "    'nutrition': {'calories': float, 'protein': float, 'carbs': float, 'fat': float, 'sugar': float}"
-        "   }"
-        " ]}, "
-        " {'type': 'dinner', 'meals': ["
-        "   {'name': str, 'veg': bool, 'ingredients': str, "
-        "    'nutrition': {'calories': float, 'protein': float, 'carbs': float, 'fat': float, 'sugar': float}"
-        "   }"
-        " ]}"
+        " {'type': 'lunch', 'meals': [ {...} ]}, {'type': 'dinner', 'meals': [ {...} ]}"
         "]"
         "\nEach meal must include nutritional information: calories, protein (g), carbs (g), fat (g), and sugar (g)."
         "\nGive at least three meals per type."

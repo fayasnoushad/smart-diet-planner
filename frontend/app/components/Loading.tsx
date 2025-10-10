@@ -5,7 +5,7 @@ export default function Loading() {
     <div className="min-h-[25vh] flex flex-col justify-center items-center">
       <span className="loading loading-spinner loading-xl mb-5"></span>
       <br />
-      Loading
+      <span className="font-semibold text-xl">Analyzing....</span>
     </div>
   );
 }
