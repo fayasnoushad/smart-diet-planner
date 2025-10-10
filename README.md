@@ -9,8 +9,10 @@ Smart Diet Planner is an AI-powered application designed to help users create pe
 - Personalized diet plans
 - Nutritional analysis
 - Meal suggestion
+- Food preferences selection
 - Responsive design
 - Great UI/UX design
+- Cache mechanism in frontend for faster response
 
 ---
 
@@ -27,8 +29,8 @@ Smart Diet Planner is an AI-powered application designed to help users create pe
 Clone the repository and follow the setup instructions for both the backend and frontend.
 
 ```bash
-git clone https://github.com/fayasnoushad/ai-career-assistant.git
-cd ai-career-assistant
+git clone https://github.com/fayasnoushad/smart-diet-planner.git
+cd smart-diet-planner
 ```
 
 #### Backend
