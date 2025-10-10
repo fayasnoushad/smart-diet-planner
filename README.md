@@ -46,3 +46,16 @@ Follow the instructions in the [frontend README](./frontend/README.md) to set up
 Once both the backend and frontend are running, you can access the application at `http://localhost:3000`.
 
 ---
+
+### Screenshots
+
+<div align="center">
+    <img src="./screenshots/1.png" alt="Screenshot 1" width="45%"/>
+    <img src="./screenshots/2.png" alt="Screenshot 2" width="45%"/>
+    <img src="./screenshots/3.png" alt="Screenshot 3" width="45%"/>
+    <img src="./screenshots/4.png" alt="Screenshot 4" width="45%"/>
+    <img src="./screenshots/5.png" alt="Screenshot 5" width="45%"/>
+    <img src="./screenshots/6.png" alt="Screenshot 6" width="45%"/>
+</div>
+
+---
