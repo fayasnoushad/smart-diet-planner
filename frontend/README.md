@@ -26,11 +26,3 @@ NEXT_PUBLIC_API_URL="http://localhost:8000"
 ```
 
 ---
-
-### Team Members
-
-- Fayas
-- [Aneesh DS](https://github.com/aneesh2149)
-- [Aginesh S](https://github.com/aginesh-s)
-
----

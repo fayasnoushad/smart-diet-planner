@@ -61,3 +61,11 @@ Once both the backend and frontend are running, you can access the application a
 </div>
 
 ---
+
+### Team Members
+
+- Fayas
+- [Aneesh DS](https://github.com/anees-2004)
+- [Aginesh S](https://github.com/aginesh-s)
+
+---
